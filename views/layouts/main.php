@@ -16,130 +16,254 @@ $this->beginPage();
         <meta name="author" content="luya.io">
         <?php $this->head() ?>
     </head>
-    <body>
-    <?php $this->beginBody() ?>
 
-        <? if(YII_ENV == "local"): ?>
-            <div style="display: block; position: fixed; left: 0; right: 0; top: -2px; bottom: -2px; z-index: 100; pointer-events: none;">
-                <div style="position: absolute; left: 0; right: 0; text-align: center; margin: 20px; font-size: 50px; color: #fff; z-index: 1000; text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);">
-                    <span class="hidden-sm-up">XS</span>
-                    <span class="hidden-xs-down hidden-md-up">SM</span>
-                    <span class="hidden-sm-down hidden-lg-up">MD</span>
-                    <span class="hidden-md-down hidden-xl-up">LG</span>
-                    <span class="hidden-lg-down">XL</span>
-                </div>
-            </div>
-        <? endif; ?>
+    <body class="homepage">
+    <div id="page-wrapper">
 
-        <!-- Just some sample bootstrap contents -->
-        <!-- Delete these if you start your project -->
-        <div class="container">
+        <!-- Header -->
+        <div id="header-wrapper">
+            <header id="header" class="container">
 
-            <div class="jumbotron m-t-2">
-                <h1 class="display-1">Installed successfully!</h1>
-                <p class="lead">All content you see on this page is static. You can delete it in <code>views/layouts/main.php</code>.</p>
-                <p class="lead">
-                    <a class="btn btn-success btn-lg" href="<?= $this->publicHtml ?>/admin" role="button" target="_blank">» Admin</a>
-                </p>
-            </div>
+                <!-- Logo -->
+                <div id="logo">
+                    <h1><a href="index.html">Verti</a></h1>
+                    <span>by HTML5 UP</span>
+                </div>
 
-            <div class="example">
-                <div class="row">
-                    <div class="col-md-1">.col-md-1</div>
-                    <div class="col-md-1">.col-md-1</div>
-                    <div class="col-md-1">.col-md-1</div>
-                    <div class="col-md-1">.col-md-1</div>
-                    <div class="col-md-1">.col-md-1</div>
-                    <div class="col-md-1">.col-md-1</div>
-                    <div class="col-md-1">.col-md-1</div>
-                    <div class="col-md-1">.col-md-1</div>
-                    <div class="col-md-1">.col-md-1</div>
-                    <div class="col-md-1">.col-md-1</div>
-                    <div class="col-md-1">.col-md-1</div>
-                    <div class="col-md-1">.col-md-1</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">.col-md-8</div>
-                    <div class="col-md-4">.col-md-4</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">.col-md-4</div>
-                    <div class="col-md-4">.col-md-4</div>
-                    <div class="col-md-4">.col-md-4</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">.col-md-6</div>
-                    <div class="col-md-6">.col-md-6</div>
-                </div>
-            </div>
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li class="current"><a href="index.html">Welcome</a></li>
+                        <li>
+                            <a href="#">Dropdown</a>
+                            <ul>
+                                <li><a href="#">Lorem ipsum dolor</a></li>
+                                <li><a href="#">Magna phasellus</a></li>
+                                <li>
+                                    <a href="#">Phasellus consequat</a>
+                                    <ul>
+                                        <li><a href="#">Lorem ipsum dolor</a></li>
+                                        <li><a href="#">Phasellus consequat</a></li>
+                                        <li><a href="#">Magna phasellus</a></li>
+                                        <li><a href="#">Etiam dolore nisl</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Veroeros feugiat</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="left-sidebar.html">Left Sidebar</a></li>
+                        <li><a href="right-sidebar.html">Right Sidebar</a></li>
+                        <li><a href="no-sidebar.html">No Sidebar</a></li>
+                    </ul>
+                </nav>
 
-            <div class="card-columns">
-                <div class="card">
-                    <img class="card-img-top img-fluid" src="https://placeholdit.imgix.net/~text?txtsize=80&txt=PLACEHOLDER&w=1000&h=800" alt="Card image cap">
-                    <div class="card-block">
-                        <h4 class="card-title">Card title that wraps to a new line</h4>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-                <div class="card card-block">
-                    <blockquote class="card-blockquote">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer>
-                            <small class="text-muted">
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card">
-                    <img class="card-img-top img-fluid" src="https://placeholdit.imgix.net/~text?txtsize=80&txt=PLACEHOLDER&w=1000&h=800" alt="Card image cap">
-                    <div class="card-block">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div class="card card-block card-inverse card-primary text-xs-center">
-                    <blockquote class="card-blockquote">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card card-block text-xs-center">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-                <div class="card">
-                    <img class="card-img img-fluid" src="https://placeholdit.imgix.net/~text?txtsize=80&txt=PLACEHOLDER&w=1000&h=1000" alt="Card image">
-                </div>
-                <div class="card card-block text-xs-right">
-                    <blockquote class="card-blockquote">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer>
-                            <small class="text-muted">
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card card-block">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-
+            </header>
         </div>
-        <!-- / End of samples -->
 
-        <div class="container">
+        <!-- Banner -->
+        <div id="banner-wrapper">
+            <div id="banner" class="box container">
+                <div class="row">
+                    <div class="7u 12u(medium)">
+                        <h2>Hi. This is Verti.</h2>
+                        <p>It's a free responsive site template by HTML5 UP</p>
+                    </div>
+                    <div class="5u 12u(medium)">
+                        <ul>
+                            <li><a href="#" class="button big icon fa-arrow-circle-right">Ok let's go</a></li>
+                            <li><a href="#" class="button alt big icon fa-question-circle">More info</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div id="features-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="4u 12u(medium)">
+
+                        <!-- Box -->
+                        <section class="box feature">
+                            <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                            <div class="inner">
+                                <header>
+                                    <h2>Put something here</h2>
+                                    <p>Maybe here as well I think</p>
+                                </header>
+                                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+                            </div>
+                        </section>
+
+                    </div>
+                    <div class="4u 12u(medium)">
+
+                        <!-- Box -->
+                        <section class="box feature">
+                            <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+                            <div class="inner">
+                                <header>
+                                    <h2>An interesting title</h2>
+                                    <p>This is also an interesting subtitle</p>
+                                </header>
+                                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+                            </div>
+                        </section>
+
+                    </div>
+                    <div class="4u 12u(medium)">
+
+                        <!-- Box -->
+                        <section class="box feature">
+                            <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+                            <div class="inner">
+                                <header>
+                                    <h2>Oh, and finally ...</h2>
+                                    <p>Here's another intriguing subtitle</p>
+                                </header>
+                                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main -->
+        <div id="main-wrapper">
+            <div class="container">
+                <div class="row 200%">
+                    <div class="4u 12u(medium)">
+
+                        <!-- Sidebar -->
+                        <div id="sidebar">
+                            <section class="widget thumbnails">
+                                <h3>Interesting stuff</h3>
+                                <div class="grid">
+                                    <div class="row 50%">
+                                        <div class="6u"><a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a></div>
+                                        <div class="6u"><a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a></div>
+                                        <div class="6u"><a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a></div>
+                                        <div class="6u"><a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a></div>
+                                    </div>
+                                </div>
+                                <a href="#" class="button icon fa-file-text-o">More</a>
+                            </section>
+                        </div>
+
+                    </div>
+                    <div class="8u 12u(medium) important(medium)">
+
+                        <!-- Content -->
+                        <div id="content">
+                            <section class="last">
+                                <h2>So what's this all about?</h2>
+                                <p>This is <strong>Verti</strong>, a free and fully responsive HTML5 site template by <a href="http://html5up.net">HTML5 UP</a>.
+                                    Verti is released under the <a href="http://html5up.net/license">Creative Commons Attribution license</a>, so feel free to use it for any personal or commercial project you might have going on (just don't forget to credit us for the design!)</p>
+                                <p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper bibendum ipsum, et tristique augue fringilla eu. Vivamus id risus vel dolor auctor euismod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat. Aliquam luctus mattis lectus sit amet phasellus quam turpis.</p>
+                                <a href="#" class="button icon fa-arrow-circle-right">Continue Reading</a>
+                            </section>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div id="footer-wrapper">
+            <footer id="footer" class="container">
+                <div class="row">
+                    <div class="3u 6u(medium) 12u$(small)">
+
+                        <!-- Links -->
+                        <section class="widget links">
+                            <h3>Random Stuff</h3>
+                            <ul class="style2">
+                                <li><a href="#">Etiam feugiat condimentum</a></li>
+                                <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+                                <li><a href="#">Sed porttitor cras in erat nec</a></li>
+                                <li><a href="#">Felis varius pellentesque potenti</a></li>
+                                <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                            </ul>
+                        </section>
+
+                    </div>
+                    <div class="3u 6u$(medium) 12u$(small)">
+
+                        <!-- Links -->
+                        <section class="widget links">
+                            <h3>Random Stuff</h3>
+                            <ul class="style2">
+                                <li><a href="#">Etiam feugiat condimentum</a></li>
+                                <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+                                <li><a href="#">Sed porttitor cras in erat nec</a></li>
+                                <li><a href="#">Felis varius pellentesque potenti</a></li>
+                                <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                            </ul>
+                        </section>
+
+                    </div>
+                    <div class="3u 6u(medium) 12u$(small)">
+
+                        <!-- Links -->
+                        <section class="widget links">
+                            <h3>Random Stuff</h3>
+                            <ul class="style2">
+                                <li><a href="#">Etiam feugiat condimentum</a></li>
+                                <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+                                <li><a href="#">Sed porttitor cras in erat nec</a></li>
+                                <li><a href="#">Felis varius pellentesque potenti</a></li>
+                                <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                            </ul>
+                        </section>
+
+                    </div>
+                    <div class="3u 6u$(medium) 12u$(small)">
+
+                        <!-- Contact -->
+                        <section class="widget contact last">
+                            <h3>Contact Us</h3>
+                            <ul>
+                                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                                <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                                <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+                                <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+                            </ul>
+                            <p>1234 Fictional Road<br />
+                                Nashville, TN 00000<br />
+                                (800) 555-0000</p>
+                        </section>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="12u">
+                        <div id="copyright">
+                            <ul class="menu">
+                                <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+
             <?= $content ?>
-        </div>
 
     <?php $this->endBody() ?>
     </body>

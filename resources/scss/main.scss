@@ -2,8 +2,10 @@
 @import 'libs/functions';
 @import 'libs/mixins';
 @charset "UTF-8";
-@import url("font-awesome.min.css");
+@import url("../../css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Oleo+Script:400|Open+Sans:300,300italic,600,600italic,800");
+
+
 
 /*
 	Verti by HTML5 UP
@@ -51,7 +53,7 @@
 	}
 
 	body {
-		@include vendor('background-image', ('linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0))', 'url("images/bg01.png")'));
+		@include vendor('background-image', ('linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0))', 'url("../../css/images/bg01.png")'));
 		background-color: #f7f7f7;
 		background-position: top left, top left;
 		background-repeat: repeat-x, repeat;

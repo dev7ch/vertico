@@ -22,7 +22,7 @@ $config = [
     /*
      * The name of your site, will be display on the login screen
      */
-    'siteTitle' => 'My Project',
+    'siteTitle' => 'Vertico',
 
     /*
      * Set the administration area language. Available language short codes: "en", "de" and "ru"
@@ -123,10 +123,10 @@ $config = [
          *
          * http://www.yiiframework.com/doc-2.0/yii-web-assetmanager.html
          */
-        /*'assetManager' => [
+        'assetManager' => [
             'class' => 'luya\web\AssetManager',
             'linkAssets' => true,
-        ],*/
+        ],
 
         'i18n' => [
             'translations' => [

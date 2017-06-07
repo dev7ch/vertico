@@ -26,14 +26,17 @@ $this->beginPage();
 
                 <!-- Logo -->
                 <div id="logo">
-                    <h1><a href="index.html">Verti</a></h1>
-                    <span>by HTML5 UP</span>
+
+                    <?= var_dump($this); exit; ?>
+                    <h1><a href="<?= $this->publicHtml ?>"><?= $this->page->title; ?></a></h1>
+
+                    <!-- <span>by HTML5 UP</span> -->
                 </div>
 
                 <!-- Nav -->
                 <nav id="nav">
                     <ul>
-                        <li class="current"><a href="index.html">Welcome</a></li>
+                        <li class="current"><a href="<?= $this->publicHtml ?>">Welcome</a></li>
                         <li>
                             <a href="#">Dropdown</a>
                             <ul>
@@ -51,126 +54,20 @@ $this->beginPage();
                                 <li><a href="#">Veroeros feugiat</a></li>
                             </ul>
                         </li>
-                        <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                        <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                        <li><a href="no-sidebar.html">No Sidebar</a></li>
+                        <?php foreach (Yii::$app->menu->find()->where(['parent_nav_id' => 0, 'container' => 'default'])->all() as $item): ?>
+                            <li <?php if ($item->isActive): ?>class="active"<?php endif;?>>
+                                <a href="<?= $item->link; ?>"><?= $item->title; ?></a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </nav>
 
             </header>
         </div>
 
-        <!-- Banner -->
-        <div id="banner-wrapper">
-            <div id="banner" class="box container">
-                <div class="row">
-                    <div class="7u 12u(medium)">
-                        <h2>Hi. This is Verti.</h2>
-                        <p>It's a free responsive site template by HTML5 UP</p>
-                    </div>
-                    <div class="5u 12u(medium)">
-                        <ul>
-                            <li><a href="#" class="button big icon fa-arrow-circle-right">Ok let's go</a></li>
-                            <li><a href="#" class="button alt big icon fa-question-circle">More info</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Page Content -->
 
-        <!-- Features -->
-        <div id="features-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="4u 12u(medium)">
-
-                        <!-- Box -->
-                        <section class="box feature">
-                            <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-                            <div class="inner">
-                                <header>
-                                    <h2>Put something here</h2>
-                                    <p>Maybe here as well I think</p>
-                                </header>
-                                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                            </div>
-                        </section>
-
-                    </div>
-                    <div class="4u 12u(medium)">
-
-                        <!-- Box -->
-                        <section class="box feature">
-                            <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-                            <div class="inner">
-                                <header>
-                                    <h2>An interesting title</h2>
-                                    <p>This is also an interesting subtitle</p>
-                                </header>
-                                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                            </div>
-                        </section>
-
-                    </div>
-                    <div class="4u 12u(medium)">
-
-                        <!-- Box -->
-                        <section class="box feature">
-                            <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-                            <div class="inner">
-                                <header>
-                                    <h2>Oh, and finally ...</h2>
-                                    <p>Here's another intriguing subtitle</p>
-                                </header>
-                                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                            </div>
-                        </section>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main -->
-        <div id="main-wrapper">
-            <div class="container">
-                <div class="row 200%">
-                    <div class="4u 12u(medium)">
-
-                        <!-- Sidebar -->
-                        <div id="sidebar">
-                            <section class="widget thumbnails">
-                                <h3>Interesting stuff</h3>
-                                <div class="grid">
-                                    <div class="row 50%">
-                                        <div class="6u"><a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a></div>
-                                        <div class="6u"><a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a></div>
-                                        <div class="6u"><a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a></div>
-                                        <div class="6u"><a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a></div>
-                                    </div>
-                                </div>
-                                <a href="#" class="button icon fa-file-text-o">More</a>
-                            </section>
-                        </div>
-
-                    </div>
-                    <div class="8u 12u(medium) important(medium)">
-
-                        <!-- Content -->
-                        <div id="content">
-                            <section class="last">
-                                <h2>So what's this all about?</h2>
-                                <p>This is <strong>Verti</strong>, a free and fully responsive HTML5 site template by <a href="http://html5up.net">HTML5 UP</a>.
-                                    Verti is released under the <a href="http://html5up.net/license">Creative Commons Attribution license</a>, so feel free to use it for any personal or commercial project you might have going on (just don't forget to credit us for the design!)</p>
-                                <p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper bibendum ipsum, et tristique augue fringilla eu. Vivamus id risus vel dolor auctor euismod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat. Aliquam luctus mattis lectus sit amet phasellus quam turpis.</p>
-                                <a href="#" class="button icon fa-arrow-circle-right">Continue Reading</a>
-                            </section>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?= $content ?>
 
         <!-- Footer -->
         <div id="footer-wrapper">
@@ -254,18 +151,10 @@ $this->beginPage();
 
     </div>
 
-    <!-- Scripts -->
-
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/skel.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="assets/js/main.js"></script>
-
-            <?= $content ?>
-
     <?php $this->endBody() ?>
+
+    <!--[if lte IE 8]><script src="<?= $this->publicHtml ?>/assets/ie/respond.min.js"></script><![endif]-->
+
     </body>
 </html>
 <?php $this->endPage() ?>

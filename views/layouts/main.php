@@ -27,8 +27,7 @@ $this->beginPage();
                 <!-- Logo -->
                 <div id="logo">
 
-                    <?= var_dump($this); exit; ?>
-                    <h1><a href="<?= $this->publicHtml ?>"><?= $this->page->title; ?></a></h1>
+                    <h1><a href="<?= $this->publicHtml ?>">Vertico</a></h1>
 
                     <!-- <span>by HTML5 UP</span> -->
                 </div>
@@ -36,29 +35,31 @@ $this->beginPage();
                 <!-- Nav -->
                 <nav id="nav">
                     <ul>
-                        <li class="current"><a href="<?= $this->publicHtml ?>">Welcome</a></li>
-                        <li>
-                            <a href="#">Dropdown</a>
-                            <ul>
-                                <li><a href="#">Lorem ipsum dolor</a></li>
-                                <li><a href="#">Magna phasellus</a></li>
-                                <li>
-                                    <a href="#">Phasellus consequat</a>
-                                    <ul>
-                                        <li><a href="#">Lorem ipsum dolor</a></li>
-                                        <li><a href="#">Phasellus consequat</a></li>
-                                        <li><a href="#">Magna phasellus</a></li>
-                                        <li><a href="#">Etiam dolore nisl</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Veroeros feugiat</a></li>
-                            </ul>
+                    <?php foreach (Yii::$app->menu->find()->where(['parent_nav_id' => 0, 'container' => 'default'])->all() as $item): ?>
+                        <li <?php if ($item->isActive): ?>class="current"<?php endif;?>>
+                            <a href="<?= $item->link; ?>"><?= $item->title; ?></a>
+                            <!-- Menu level 2 -->
+                            <? if ($item->hasChildren): ?>
+                                <ul>
+                                <? foreach ($item->children as $secondItem): ?>
+                                    <li <?php if ($secondItem->isActive): ?>class="active"<?php endif;?>>
+                                        <a href="<?= $secondItem->link; ?>"><?= $secondItem->title; ?></a>
+                                        <!-- Menu level 2 -->
+                                        <? if ($secondItem->hasChildren): ?>
+                                            <ul>
+                                            <? foreach ($secondItem->children  as $thirdItem): ?>
+                                                <li <?php if ($thirdItem->isActive): ?>class="active"<?php endif;?>>
+                                                    <a href="<?= $thirdItem->link; ?>"><?= $thirdItem->title; ?></a>
+                                                </li>
+                                            <? endforeach; ?>
+                                            </ul>
+                                        <? endif; ?>
+                                    </li>
+                                <? endforeach; ?>
+                                </ul>
+                            <? endif; ?>
                         </li>
-                        <?php foreach (Yii::$app->menu->find()->where(['parent_nav_id' => 0, 'container' => 'default'])->all() as $item): ?>
-                            <li <?php if ($item->isActive): ?>class="active"<?php endif;?>>
-                                <a href="<?= $item->link; ?>"><?= $item->title; ?></a>
-                            </li>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
                     </ul>
                 </nav>
 
@@ -72,6 +73,7 @@ $this->beginPage();
         <!-- Footer -->
         <div id="footer-wrapper">
             <footer id="footer" class="container">
+
                 <div class="row">
                     <div class="3u 6u(medium) 12u$(small)">
 
@@ -143,6 +145,7 @@ $this->beginPage();
                             <ul class="menu">
                                 <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
                             </ul>
+                            <img src="https://img.shields.io/badge/Powered%20by-LUYA-brightgreen.svg" />
                         </div>
                     </div>
                 </div>
@@ -158,3 +161,4 @@ $this->beginPage();
     </body>
 </html>
 <?php $this->endPage() ?>
+

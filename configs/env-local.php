@@ -17,7 +17,7 @@ $config = [
     /*
      * For best interoperability it is recommended that you use only alphanumeric characters when specifying an application ID
      */
-    'id' => 'myproject',
+    'id' => 'vertico',
 
     /*
      * The name of your site, will be display on the login screen
@@ -40,6 +40,7 @@ $config = [
      * Define the basePath of the project (Yii Configration Setup
      */
     'basePath' => dirname(__DIR__),
+
 
     'modules' => [
 
@@ -70,6 +71,7 @@ $config = [
         'cmsadmin' => 'luya\cms\admin\Module',
     ],
     'components' => [
+
 
         /*
          * Add your smtp connection to the mail component to send mails (which is required for secure login), you can test your
@@ -156,3 +158,4 @@ $config = [
 
 
 return \yii\helpers\ArrayHelper::merge($config, require('env-local-db.php'));
+

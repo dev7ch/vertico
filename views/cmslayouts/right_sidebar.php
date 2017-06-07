@@ -8,6 +8,12 @@
                     <!-- Content -->
                     <article>
 
+                        <? if (!empty($placeholders['content'])): ?>
+
+                            <?= $placeholders['content'] ?>
+
+                        <? else: ?>
+
                         <h2>Right Sidebar</h2>
 
                         <p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
@@ -32,12 +38,20 @@
                             Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
                             Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
 
+                        <? endif; ?>
+
                     </article>
 
                 </div>
             </div>
             <div class="4u 12u$(medium)">
                 <div id="sidebar">
+
+                    <? if (!empty($placeholders['rightsidebar'])): ?>
+
+                        <?= $placeholders['rightsidebar'] ?>
+
+                    <? else: ?>
 
                     <!-- Sidebar -->
                     <section>
@@ -62,6 +76,8 @@
                             <li><a href="#">Semper mod quisturpis nisi</a></li>
                         </ul>
                     </section>
+
+                    <? endif; ?>
 
                 </div>
             </div>

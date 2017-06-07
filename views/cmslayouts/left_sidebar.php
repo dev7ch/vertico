@@ -5,6 +5,12 @@
             <div class="4u 12u$(medium)">
                 <div id="sidebar">
 
+                    <? if (!empty($placeholders['leftsidebar'])): ?>
+
+                        <?= $placeholders['leftsidebar'] ?>
+
+                    <? else: ?>
+
                     <!-- Sidebar -->
                     <section>
                         <h3>Subheading</h3>
@@ -29,6 +35,8 @@
                         </ul>
                     </section>
 
+                    <? endif; ?>
+
                 </div>
             </div>
             <div class="8u 12u$(medium) important(medium)">
@@ -36,6 +44,12 @@
 
                     <!-- Content -->
                     <article>
+
+                        <? if (!empty($placeholders['content'])): ?>
+
+                            <?= $placeholders['content'] ?>
+
+                        <? else: ?>
 
                         <h2>Left Sidebar</h2>
 
@@ -60,6 +74,8 @@
                             fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
                             Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
                             Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
+
+                        <? endif; ?>
 
                     </article>
 

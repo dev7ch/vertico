@@ -6,6 +6,13 @@
             <!-- Content -->
             <article>
 
+
+                <? if (!empty($placeholders['content'])): ?>
+
+                    <?= $placeholders['content'] ?>
+
+                <? else: ?>
+
                 <h2>No Sidebar</h2>
 
                 <p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
@@ -29,6 +36,9 @@
                     fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
                     Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
                     Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
+
+
+                <? endif; ?>
 
             </article>
 

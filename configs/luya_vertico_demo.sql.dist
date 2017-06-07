@@ -1,0 +1,1415 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Erstellungszeit: 07. Jun 2017 um 18:16
+-- Server-Version: 5.7.18
+-- PHP-Version: 7.1.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Datenbank: `luya_test`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_auth`
+--
+
+CREATE TABLE `admin_auth` (
+  `id` int(11) NOT NULL,
+  `alias_name` varchar(60) NOT NULL,
+  `module_name` varchar(60) NOT NULL,
+  `is_crud` tinyint(1) DEFAULT '0',
+  `route` varchar(200) DEFAULT NULL,
+  `api` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_auth`
+--
+
+INSERT INTO `admin_auth` (`id`, `alias_name`, `module_name`, `is_crud`, `route`, `api`) VALUES
+(1, 'menu_access_item_user', 'admin', 1, '0', 'api-admin-user'),
+(2, 'menu_access_item_group', 'admin', 1, '0', 'api-admin-group'),
+(3, 'menu_system_item_language', 'admin', 1, '0', 'api-admin-lang'),
+(4, 'menu_system_item_tags', 'admin', 1, '0', 'api-admin-tag'),
+(5, 'menu_system_logger', 'admin', 1, '0', 'api-admin-logger'),
+(6, 'menu_images_item_effects', 'admin', 1, '0', 'api-admin-effect'),
+(7, 'menu_images_item_filters', 'admin', 1, '0', 'api-admin-filter'),
+(8, 'Machines', 'admin', 1, '0', 'api-admin-proxymachine'),
+(9, 'Builds', 'admin', 1, '0', 'api-admin-proxybuild'),
+(10, 'menu_node_filemanager', 'admin', 0, 'admin/storage/index', '0'),
+(11, 'Seiten-Inhaltsblöcke', 'cmsadmin', 1, '0', 'api-cms-navitempageblockitem'),
+(12, 'menu_group_item_env_container', 'cmsadmin', 1, '0', 'api-cms-navcontainer'),
+(13, 'menu_group_item_env_layouts', 'cmsadmin', 1, '0', 'api-cms-layout'),
+(14, 'menu_group_item_elements_group', 'cmsadmin', 1, '0', 'api-cms-blockgroup'),
+(15, 'menu_group_item_elements_blocks', 'cmsadmin', 1, '0', 'api-cms-block'),
+(16, 'Neue Seite erstellen', 'cmsadmin', 0, 'cmsadmin/page/create', '0'),
+(17, 'Seiten bearbeiten', 'cmsadmin', 0, 'cmsadmin/page/update', '0'),
+(18, 'Seite löschen', 'cmsadmin', 0, 'cmsadmin/page/delete', '0'),
+(19, 'Vorlagen bearbeiten', 'cmsadmin', 0, 'cmsadmin/page/drafts', '0'),
+(20, 'menu_group_item_env_config', 'cmsadmin', 0, 'cmsadmin/config/index', '0'),
+(21, 'menu_node_cms', 'cmsadmin', 0, 'cmsadmin/default/index', '0'),
+(22, 'menu_group_item_env_permission', 'cmsadmin', 0, 'cmsadmin/permission/index', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_config`
+--
+
+CREATE TABLE `admin_config` (
+  `name` varchar(80) NOT NULL,
+  `value` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_config`
+--
+
+INSERT INTO `admin_config` (`name`, `value`) VALUES
+('last_import_timestamp', '1496845174'),
+('setup_command_timestamp', '1496360684');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_group`
+--
+
+CREATE TABLE `admin_group` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `text` text,
+  `is_deleted` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_group`
+--
+
+INSERT INTO `admin_group` (`id`, `name`, `text`, `is_deleted`) VALUES
+(1, 'Administrator', 'Administrator Accounts have full access to all Areas and can create, update and delete all data records.', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_group_auth`
+--
+
+CREATE TABLE `admin_group_auth` (
+  `group_id` int(11) DEFAULT NULL,
+  `auth_id` int(11) DEFAULT NULL,
+  `crud_create` smallint(4) DEFAULT NULL,
+  `crud_update` smallint(4) DEFAULT NULL,
+  `crud_delete` smallint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_group_auth`
+--
+
+INSERT INTO `admin_group_auth` (`group_id`, `auth_id`, `crud_create`, `crud_update`, `crud_delete`) VALUES
+(1, 1, 1, 1, 1),
+(1, 2, 1, 1, 1),
+(1, 3, 1, 1, 1),
+(1, 4, 1, 1, 1),
+(1, 5, 1, 1, 1),
+(1, 6, 1, 1, 1),
+(1, 7, 1, 1, 1),
+(1, 8, 1, 1, 1),
+(1, 9, 1, 1, 1),
+(1, 10, 1, 1, 1),
+(1, 11, 1, 1, 1),
+(1, 12, 1, 1, 1),
+(1, 13, 1, 1, 1),
+(1, 14, 1, 1, 1),
+(1, 15, 1, 1, 1),
+(1, 16, 1, 1, 1),
+(1, 17, 1, 1, 1),
+(1, 18, 1, 1, 1),
+(1, 19, 1, 1, 1),
+(1, 20, 1, 1, 1),
+(1, 21, 1, 1, 1),
+(1, 22, 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_lang`
+--
+
+CREATE TABLE `admin_lang` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `short_code` varchar(15) DEFAULT NULL,
+  `is_default` tinyint(1) DEFAULT '0',
+  `is_deleted` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_lang`
+--
+
+INSERT INTO `admin_lang` (`id`, `name`, `short_code`, `is_default`, `is_deleted`) VALUES
+(1, 'Deutsch', 'de', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_logger`
+--
+
+CREATE TABLE `admin_logger` (
+  `id` int(11) NOT NULL,
+  `time` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `type` int(11) NOT NULL,
+  `trace_file` varchar(255) DEFAULT NULL,
+  `trace_line` varchar(255) DEFAULT NULL,
+  `trace_function` varchar(255) DEFAULT NULL,
+  `trace_function_args` text,
+  `group_identifier` varchar(255) DEFAULT NULL,
+  `group_identifier_index` int(11) DEFAULT NULL,
+  `get` text,
+  `post` text,
+  `session` text,
+  `server` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_ngrest_log`
+--
+
+CREATE TABLE `admin_ngrest_log` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `timestamp_create` int(11) NOT NULL,
+  `route` varchar(80) NOT NULL,
+  `api` varchar(80) NOT NULL,
+  `is_update` tinyint(1) DEFAULT '0',
+  `is_insert` tinyint(1) DEFAULT '0',
+  `attributes_json` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_ngrest_log`
+--
+
+INSERT INTO `admin_ngrest_log` (`id`, `user_id`, `timestamp_create`, `route`, `api`, `is_update`, `is_insert`, `attributes_json`) VALUES
+(1, 1, 1496835978, '', 'api-admin-user', 1, 0, '{\"id\":1,\"firstname\":\"Silvan\",\"lastname\":\"Hahn\",\"title\":1,\"email\":\"silvan@dev7.ch\",\"password\":\"$2y$13$SB6qNxbeT2aRH7E8vTCA8.FK.wadbat5RS04y4Zo7fPGN92rSVfTW\",\"password_salt\":\"CzlZqHVctdlemP2JuRrMOqOnzYDij9G0\",\"auth_token\":\"71b2d6c4d52abbc70e232e45c5568f38c51f9cd33b84fc5da9f96ab0fa90e0c3EgmrTUk0i9IToS-15cYpYqRrZXwP-Nn9\",\"is_deleted\":0,\"secure_token\":null,\"secure_token_timestamp\":0,\"force_reload\":0,\"settings\":null,\"cookie_token\":null}'),
+(2, 1, 1496845185, '', 'api-admin-user', 1, 0, '{\"id\":1,\"firstname\":\"Silvan\",\"lastname\":\"Hahn\",\"title\":1,\"email\":\"silvan@dev7.ch\",\"password\":\"$2y$13$SB6qNxbeT2aRH7E8vTCA8.FK.wadbat5RS04y4Zo7fPGN92rSVfTW\",\"password_salt\":\"CzlZqHVctdlemP2JuRrMOqOnzYDij9G0\",\"auth_token\":\"45732994b59aa9711d4e0bdbe6ff58d9185789fe8df6e558ecb20aeb16a74e34tbqkcrAwAwF6VvHGa4Jbm2MIYRgYNHHz\",\"is_deleted\":0,\"secure_token\":null,\"secure_token_timestamp\":0,\"force_reload\":0,\"settings\":\"{\\\"tree\\\":{\\\"1\\\":1,\\\"5\\\":1,\\\"6\\\":1}}\",\"cookie_token\":null}');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_property`
+--
+
+CREATE TABLE `admin_property` (
+  `id` int(11) NOT NULL,
+  `module_name` varchar(120) DEFAULT NULL,
+  `var_name` varchar(40) NOT NULL,
+  `class_name` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_proxy_build`
+--
+
+CREATE TABLE `admin_proxy_build` (
+  `id` int(11) NOT NULL,
+  `machine_id` int(11) NOT NULL,
+  `timestamp` int(11) NOT NULL,
+  `build_token` varchar(255) NOT NULL,
+  `config` text NOT NULL,
+  `is_complet` tinyint(1) DEFAULT '0',
+  `expiration_time` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_proxy_machine`
+--
+
+CREATE TABLE `admin_proxy_machine` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `access_token` varchar(255) NOT NULL,
+  `identifier` varchar(255) NOT NULL,
+  `is_deleted` tinyint(1) DEFAULT '0',
+  `is_disabled` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_search_data`
+--
+
+CREATE TABLE `admin_search_data` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `timestamp_create` int(11) NOT NULL,
+  `query` varchar(255) NOT NULL,
+  `num_rows` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_storage_effect`
+--
+
+CREATE TABLE `admin_storage_effect` (
+  `id` int(11) NOT NULL,
+  `identifier` varchar(100) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `imagine_name` varchar(255) DEFAULT NULL,
+  `imagine_json_params` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_storage_effect`
+--
+
+INSERT INTO `admin_storage_effect` (`id`, `identifier`, `name`, `imagine_name`, `imagine_json_params`) VALUES
+(1, 'thumbnail', 'Thumbnail', 'thumbnail', '{\"vars\":[{\"var\":\"width\",\"label\":\"Breit in Pixel\"},{\"var\":\"height\",\"label\":\"Hoehe in Pixel\"},{\"var\":\"mode\",\"label\":\"outbound or inset\"},{\"var\":\"saveOptions\",\"label\":\"save options\"}]}'),
+(2, 'crop', 'Crop', 'crop', '{\"vars\":[{\"var\":\"width\",\"label\":\"Breit in Pixel\"},{\"var\":\"height\",\"label\":\"Hoehe in Pixel\"},{\"var\":\"saveOptions\",\"label\":\"save options\"}]}');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_storage_file`
+--
+
+CREATE TABLE `admin_storage_file` (
+  `id` int(11) NOT NULL,
+  `is_hidden` tinyint(1) DEFAULT '0',
+  `folder_id` int(11) DEFAULT '0',
+  `name_original` varchar(255) DEFAULT NULL,
+  `name_new` varchar(255) DEFAULT NULL,
+  `name_new_compound` varchar(255) DEFAULT NULL,
+  `mime_type` varchar(255) DEFAULT NULL,
+  `extension` varchar(255) DEFAULT NULL,
+  `hash_file` varchar(255) DEFAULT NULL,
+  `hash_name` varchar(255) DEFAULT NULL,
+  `upload_timestamp` int(11) DEFAULT NULL,
+  `file_size` int(11) DEFAULT '0',
+  `upload_user_id` int(11) DEFAULT '0',
+  `is_deleted` tinyint(1) DEFAULT '0',
+  `passthrough_file` tinyint(1) DEFAULT '0',
+  `passthrough_file_password` varchar(40) DEFAULT NULL,
+  `passthrough_file_stats` int(11) DEFAULT '0',
+  `caption` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_storage_file`
+--
+
+INSERT INTO `admin_storage_file` (`id`, `is_hidden`, `folder_id`, `name_original`, `name_new`, `name_new_compound`, `mime_type`, `extension`, `hash_file`, `hash_name`, `upload_timestamp`, `file_size`, `upload_user_id`, `is_deleted`, `passthrough_file`, `passthrough_file_password`, `passthrough_file_stats`, `caption`) VALUES
+(1, 0, 0, 'pic03.jpg', 'pic03', 'pic03_2499540d.jpg', 'image/jpeg', 'jpg', '025432ad7b9014de21e02002eac23a26', '2499540d', 1496850435, 10574, 1, 0, 0, NULL, 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_storage_filter`
+--
+
+CREATE TABLE `admin_storage_filter` (
+  `id` int(11) NOT NULL,
+  `identifier` varchar(100) NOT NULL,
+  `name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_storage_filter`
+--
+
+INSERT INTO `admin_storage_filter` (`id`, `identifier`, `name`) VALUES
+(1, 'large-crop', 'Crop large (800x800)'),
+(2, 'large-thumbnail', 'Thumbnail large (800xnull)'),
+(3, 'medium-crop', 'Crop medium (300x300)'),
+(4, 'medium-thumbnail', 'Thumbnail medium (300xnull)'),
+(5, 'small-crop', 'Crop small (100x100)'),
+(6, 'small-landscape', 'Landscape small (150x50)'),
+(7, 'small-thumbnail', 'Thumbnail small (100xnull)'),
+(8, 'tiny-crop', 'Crop tiny (40x40)'),
+(9, 'tiny-thumbnail', 'Thumbnail tiny (40xnull)');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_storage_filter_chain`
+--
+
+CREATE TABLE `admin_storage_filter_chain` (
+  `id` int(11) NOT NULL,
+  `sort_index` int(11) DEFAULT NULL,
+  `filter_id` int(11) DEFAULT NULL,
+  `effect_id` int(11) DEFAULT NULL,
+  `effect_json_values` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_storage_filter_chain`
+--
+
+INSERT INTO `admin_storage_filter_chain` (`id`, `sort_index`, `filter_id`, `effect_id`, `effect_json_values`) VALUES
+(1, NULL, 1, 1, '{\"width\":800,\"height\":800}'),
+(2, NULL, 2, 1, '{\"width\":800,\"height\":null}'),
+(3, NULL, 3, 1, '{\"width\":300,\"height\":300}'),
+(4, NULL, 4, 1, '{\"width\":300,\"height\":null}'),
+(5, NULL, 5, 1, '{\"width\":100,\"height\":100}'),
+(6, NULL, 6, 1, '{\"width\":150,\"height\":50}'),
+(7, NULL, 7, 1, '{\"width\":100,\"height\":null}'),
+(8, NULL, 8, 1, '{\"width\":40,\"height\":40}'),
+(9, NULL, 9, 1, '{\"width\":40,\"height\":null}');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_storage_folder`
+--
+
+CREATE TABLE `admin_storage_folder` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `timestamp_create` int(11) DEFAULT NULL,
+  `is_deleted` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_storage_image`
+--
+
+CREATE TABLE `admin_storage_image` (
+  `id` int(11) NOT NULL,
+  `file_id` int(11) DEFAULT NULL,
+  `filter_id` int(11) DEFAULT NULL,
+  `resolution_width` int(11) DEFAULT NULL,
+  `resolution_height` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_storage_image`
+--
+
+INSERT INTO `admin_storage_image` (`id`, `file_id`, `filter_id`, `resolution_width`, `resolution_height`) VALUES
+(1, 1, 8, 40, 40),
+(2, 1, 4, 300, 238),
+(3, 1, 0, 384, 304);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_tag`
+--
+
+CREATE TABLE `admin_tag` (
+  `id` int(11) NOT NULL,
+  `name` varchar(120) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_tag_relation`
+--
+
+CREATE TABLE `admin_tag_relation` (
+  `tag_id` int(11) NOT NULL,
+  `table_name` varchar(120) NOT NULL,
+  `pk_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_user`
+--
+
+CREATE TABLE `admin_user` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `title` smallint(1) DEFAULT NULL,
+  `email` varchar(120) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `password_salt` varchar(255) DEFAULT NULL,
+  `auth_token` varchar(255) DEFAULT NULL,
+  `is_deleted` tinyint(1) DEFAULT '0',
+  `secure_token` varchar(40) DEFAULT NULL,
+  `secure_token_timestamp` int(11) DEFAULT '0',
+  `force_reload` tinyint(1) DEFAULT '0',
+  `settings` text,
+  `cookie_token` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_user`
+--
+
+INSERT INTO `admin_user` (`id`, `firstname`, `lastname`, `title`, `email`, `password`, `password_salt`, `auth_token`, `is_deleted`, `secure_token`, `secure_token_timestamp`, `force_reload`, `settings`, `cookie_token`) VALUES
+(1, 'Silvan', 'Hahn', 1, 'silvan@dev7.ch', '$2y$13$SB6qNxbeT2aRH7E8vTCA8.FK.wadbat5RS04y4Zo7fPGN92rSVfTW', 'CzlZqHVctdlemP2JuRrMOqOnzYDij9G0', '45732994b59aa9711d4e0bdbe6ff58d9185789fe8df6e558ecb20aeb16a74e34tbqkcrAwAwF6VvHGa4Jbm2MIYRgYNHHz', 0, NULL, 0, 0, '{\"tree\":{\"1\":1,\"5\":1,\"6\":1}}', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_user_group`
+--
+
+CREATE TABLE `admin_user_group` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_user_group`
+--
+
+INSERT INTO `admin_user_group` (`id`, `user_id`, `group_id`) VALUES
+(1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_user_login`
+--
+
+CREATE TABLE `admin_user_login` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `timestamp_create` int(11) NOT NULL,
+  `auth_token` varchar(120) NOT NULL,
+  `ip` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_user_login`
+--
+
+INSERT INTO `admin_user_login` (`id`, `user_id`, `timestamp_create`, `auth_token`, `ip`) VALUES
+(1, 1, 1496360702, 'e4aa2fa53f99d68d5cc186acbd371301aee2c6e60a82966509bdddf3bac326b3gB_Q-hOC4tgDdrSgR4qsX0lUrIe5sABC', '127.0.0.1'),
+(2, 1, 1496835742, '71b2d6c4d52abbc70e232e45c5568f38c51f9cd33b84fc5da9f96ab0fa90e0c3EgmrTUk0i9IToS-15cYpYqRrZXwP-Nn9', '127.0.0.1'),
+(3, 1, 1496838380, '1a650c10a0715824b8bcddbe3f271df225534f3d0f7037fa4303de782be3b231cKPPCGc6IwWZIo1F_E9gZSHCUEmugao0', '127.0.0.1'),
+(4, 1, 1496845146, '45732994b59aa9711d4e0bdbe6ff58d9185789fe8df6e558ecb20aeb16a74e34tbqkcrAwAwF6VvHGa4Jbm2MIYRgYNHHz', '127.0.0.1');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin_user_online`
+--
+
+CREATE TABLE `admin_user_online` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `last_timestamp` int(11) NOT NULL,
+  `invoken_route` varchar(120) NOT NULL,
+  `lock_pk` varchar(255) DEFAULT NULL,
+  `lock_table` varchar(255) DEFAULT NULL,
+  `lock_translation` varchar(255) DEFAULT NULL,
+  `lock_translation_args` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin_user_online`
+--
+
+INSERT INTO `admin_user_online` (`id`, `user_id`, `last_timestamp`, `invoken_route`, `lock_pk`, `lock_table`, `lock_translation`, `lock_translation_args`) VALUES
+(4, 1, 1496852083, 'api-cms-navitempageblockitem', '1', 'cms_nav_item', 'lock_cms_edit_page', '{\"title\":\"Homepage\"}');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_block`
+--
+
+CREATE TABLE `cms_block` (
+  `id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `class` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `cms_block`
+--
+
+INSERT INTO `cms_block` (`id`, `group_id`, `class`) VALUES
+(1, 4, '\\luya\\cms\\frontend\\blocks\\AudioBlock'),
+(2, 1, '\\luya\\cms\\frontend\\blocks\\DevBlock'),
+(3, 3, '\\luya\\cms\\frontend\\blocks\\FileListBlock'),
+(4, 3, '\\luya\\cms\\frontend\\blocks\\FormBlock'),
+(5, 1, '\\luya\\cms\\frontend\\blocks\\HtmlBlock'),
+(6, 4, '\\luya\\cms\\frontend\\blocks\\ImageBlock'),
+(7, 4, '\\luya\\cms\\frontend\\blocks\\ImageTextBlock'),
+(8, 2, '\\luya\\cms\\frontend\\blocks\\LayoutBlock'),
+(9, 3, '\\luya\\cms\\frontend\\blocks\\LineBlock'),
+(10, 3, '\\luya\\cms\\frontend\\blocks\\LinkButtonBlock'),
+(11, 6, '\\luya\\cms\\frontend\\blocks\\ListBlock'),
+(12, 3, '\\luya\\cms\\frontend\\blocks\\MapBlock'),
+(13, 1, '\\luya\\cms\\frontend\\blocks\\ModuleBlock'),
+(14, 6, '\\luya\\cms\\frontend\\blocks\\QuoteBlock'),
+(15, 3, '\\luya\\cms\\frontend\\blocks\\SpacingBlock'),
+(16, 3, '\\luya\\cms\\frontend\\blocks\\TableBlock'),
+(17, 6, '\\luya\\cms\\frontend\\blocks\\TextBlock'),
+(18, 6, '\\luya\\cms\\frontend\\blocks\\TitleBlock'),
+(19, 4, '\\luya\\cms\\frontend\\blocks\\VideoBlock'),
+(20, 6, '\\luya\\cms\\frontend\\blocks\\WysiwygBlock'),
+(21, 5, '\\app\\blocks\\BannerBlock'),
+(22, 5, '\\app\\blocks\\BoxBlock'),
+(23, 5, '\\app\\blocks\\ButtonBlock');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_block_group`
+--
+
+CREATE TABLE `cms_block_group` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `is_deleted` tinyint(1) DEFAULT '0',
+  `identifier` varchar(120) NOT NULL,
+  `created_timestamp` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `cms_block_group`
+--
+
+INSERT INTO `cms_block_group` (`id`, `name`, `is_deleted`, `identifier`, `created_timestamp`) VALUES
+(1, 'Entwickler', 0, 'development-group', 1496360658),
+(2, 'Layouts', 0, 'layout-group', 1496360658),
+(3, 'Standard', 0, 'main-group', 1496360658),
+(4, 'Medien', 0, 'media-group', 1496360658),
+(5, 'Projekt', 0, 'project-group', 1496360658),
+(6, 'Texte', 0, 'text-group', 1496360658);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_config`
+--
+
+CREATE TABLE `cms_config` (
+  `name` varchar(80) NOT NULL,
+  `value` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_layout`
+--
+
+CREATE TABLE `cms_layout` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `json_config` text,
+  `view_file` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `cms_layout`
+--
+
+INSERT INTO `cms_layout` (`id`, `name`, `json_config`, `view_file`) VALUES
+(1, 'Main', '{\"placeholders\":[{\"label\":\"Banner\",\"var\":\"banner\"},{\"label\":\"Features\",\"var\":\"features\"},{\"label\":\"Sidebar\",\"var\":\"sidebar\"}]}', 'main.php'),
+(2, 'Left Sidebar', '{\"placeholders\":[{\"label\":\"Leftsidebar\",\"var\":\"leftsidebar\"},{\"label\":\"Content\",\"var\":\"content\"}]}', 'left_sidebar.php'),
+(3, 'No Sidebar', '{\"placeholders\":[{\"label\":\"Content\",\"var\":\"content\"}]}', 'no_sidebar.php'),
+(4, 'Right Sidebar', '{\"placeholders\":[{\"label\":\"Content\",\"var\":\"content\"},{\"label\":\"Rightsidebar\",\"var\":\"rightsidebar\"}]}', 'right_sidebar.php');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_log`
+--
+
+CREATE TABLE `cms_log` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT '0',
+  `is_insertion` tinyint(1) DEFAULT '0',
+  `is_update` tinyint(1) DEFAULT '0',
+  `is_deletion` tinyint(1) DEFAULT '0',
+  `timestamp` int(11) NOT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `data_json` text,
+  `table_name` varchar(120) DEFAULT NULL,
+  `row_id` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `cms_log`
+--
+
+INSERT INTO `cms_log` (`id`, `user_id`, `is_insertion`, `is_update`, `is_deletion`, `timestamp`, `message`, `data_json`, `table_name`, `row_id`) VALUES
+(1, 1, 1, 0, 0, 1496835773, '{\"tableName\":\"cms_nav\",\"action\":\"insert\",\"row\":2}', '{\"parent_nav_id\":\"0\",\"nav_container_id\":\"1\",\"is_hidden\":1,\"is_offline\":1,\"is_draft\":\"0\",\"sort_index\":1,\"id\":2}', 'cms_nav', 2),
+(2, 1, 1, 0, 0, 1496835773, '{\"tableName\":\"cms_nav_item\",\"action\":\"insert\",\"row\":2}', '{\"lang_id\":\"1\",\"title\":\"Left Sidebar\",\"alias\":\"left-sidebar\",\"description\":null,\"nav_item_type\":1,\"nav_item_type_id\":2,\"nav_id\":2,\"timestamp_create\":1496835773,\"timestamp_update\":0,\"create_user_id\":1,\"update_user_id\":1,\"id\":2}', 'cms_nav_item', 2),
+(3, 1, 1, 0, 0, 1496835790, '{\"tableName\":\"cms_nav\",\"action\":\"insert\",\"row\":3}', '{\"parent_nav_id\":\"0\",\"nav_container_id\":\"1\",\"is_hidden\":1,\"is_offline\":1,\"is_draft\":\"0\",\"sort_index\":3,\"id\":3}', 'cms_nav', 3),
+(4, 1, 1, 0, 0, 1496835790, '{\"tableName\":\"cms_nav_item\",\"action\":\"insert\",\"row\":3}', '{\"lang_id\":\"1\",\"title\":\"Right Sidebar\",\"alias\":\"right-sidebar\",\"description\":null,\"nav_item_type\":1,\"nav_item_type_id\":3,\"nav_id\":3,\"timestamp_create\":1496835790,\"timestamp_update\":0,\"create_user_id\":1,\"update_user_id\":1,\"id\":3}', 'cms_nav_item', 3),
+(5, 1, 1, 0, 0, 1496835808, '{\"tableName\":\"cms_nav\",\"action\":\"insert\",\"row\":4}', '{\"parent_nav_id\":\"0\",\"nav_container_id\":\"1\",\"is_hidden\":1,\"is_offline\":1,\"is_draft\":\"0\",\"sort_index\":4,\"id\":4}', 'cms_nav', 4),
+(6, 1, 1, 0, 0, 1496835808, '{\"tableName\":\"cms_nav_item\",\"action\":\"insert\",\"row\":4}', '{\"lang_id\":\"1\",\"title\":\"No Sidebar\",\"alias\":\"no-sidebar\",\"description\":null,\"nav_item_type\":1,\"nav_item_type_id\":4,\"nav_id\":4,\"timestamp_create\":1496835808,\"timestamp_update\":0,\"create_user_id\":1,\"update_user_id\":1,\"id\":4}', 'cms_nav_item', 4),
+(7, 1, 0, 1, 0, 1496835822, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":2}', '{\"id\":2,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":2,\"is_deleted\":0,\"is_hidden\":\"0\",\"is_home\":0,\"is_offline\":1,\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 2),
+(8, 1, 0, 1, 0, 1496835823, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":2}', '{\"id\":2,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":2,\"is_deleted\":0,\"is_hidden\":0,\"is_home\":0,\"is_offline\":\"0\",\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 2),
+(9, 1, 0, 1, 0, 1496835825, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":3}', '{\"id\":3,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":3,\"is_deleted\":0,\"is_hidden\":\"0\",\"is_home\":0,\"is_offline\":1,\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 3),
+(10, 1, 0, 1, 0, 1496835826, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":3}', '{\"id\":3,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":3,\"is_deleted\":0,\"is_hidden\":0,\"is_home\":0,\"is_offline\":\"0\",\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 3),
+(11, 1, 0, 1, 0, 1496835831, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":4}', '{\"id\":4,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":4,\"is_deleted\":0,\"is_hidden\":\"0\",\"is_home\":0,\"is_offline\":1,\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 4),
+(12, 1, 0, 1, 0, 1496835831, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":4}', '{\"id\":4,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":4,\"is_deleted\":0,\"is_hidden\":0,\"is_home\":0,\"is_offline\":\"0\",\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 4),
+(13, 1, 1, 0, 0, 1496838407, '{\"tableName\":\"cms_nav\",\"action\":\"insert\",\"row\":5}', '{\"parent_nav_id\":\"1\",\"nav_container_id\":1,\"is_hidden\":1,\"is_offline\":1,\"sort_index\":1,\"id\":5}', 'cms_nav', 5),
+(14, 1, 1, 0, 0, 1496838407, '{\"tableName\":\"cms_nav_item\",\"action\":\"insert\",\"row\":5}', '{\"lang_id\":\"1\",\"title\":\"Dropdown\",\"alias\":\"dropdown\",\"description\":null,\"nav_item_type\":3,\"nav_item_type_id\":1,\"nav_id\":5,\"timestamp_create\":1496838407,\"timestamp_update\":0,\"create_user_id\":1,\"update_user_id\":1,\"id\":5}', 'cms_nav_item', 5),
+(15, 1, 0, 1, 0, 1496838417, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":5}', '{\"id\":5,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":1,\"is_deleted\":0,\"is_hidden\":1,\"is_home\":0,\"is_offline\":1,\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 5),
+(16, 1, 0, 1, 0, 1496838420, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":5}', '{\"id\":5,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":3,\"is_deleted\":0,\"is_hidden\":1,\"is_home\":0,\"is_offline\":1,\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 5),
+(17, 1, 0, 1, 0, 1496838430, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":5}', '{\"id\":5,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":2,\"is_deleted\":0,\"is_hidden\":1,\"is_home\":0,\"is_offline\":\"0\",\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 5),
+(18, 1, 0, 1, 0, 1496838431, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":5}', '{\"id\":5,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":2,\"is_deleted\":0,\"is_hidden\":\"0\",\"is_home\":0,\"is_offline\":0,\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 5),
+(19, 1, 1, 0, 0, 1496838464, '{\"tableName\":\"cms_nav\",\"action\":\"insert\",\"row\":6}', '{\"parent_nav_id\":\"5\",\"nav_container_id\":1,\"is_hidden\":1,\"is_offline\":1,\"is_draft\":\"0\",\"sort_index\":1,\"id\":6}', 'cms_nav', 6),
+(20, 1, 1, 0, 0, 1496838464, '{\"tableName\":\"cms_nav_item\",\"action\":\"insert\",\"row\":6}', '{\"lang_id\":\"1\",\"title\":\"Lorem larum\",\"alias\":\"lorem-larum\",\"description\":null,\"nav_item_type\":1,\"nav_item_type_id\":5,\"nav_id\":6,\"timestamp_create\":1496838464,\"timestamp_update\":0,\"create_user_id\":1,\"update_user_id\":1,\"id\":6}', 'cms_nav_item', 6),
+(21, 1, 0, 1, 0, 1496838470, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":6}', '{\"id\":6,\"nav_container_id\":1,\"parent_nav_id\":5,\"sort_index\":1,\"is_deleted\":0,\"is_hidden\":1,\"is_home\":0,\"is_offline\":\"0\",\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 6),
+(22, 1, 0, 1, 0, 1496838471, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":6}', '{\"id\":6,\"nav_container_id\":1,\"parent_nav_id\":5,\"sort_index\":1,\"is_deleted\":0,\"is_hidden\":\"0\",\"is_home\":0,\"is_offline\":0,\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 6),
+(23, 1, 1, 0, 0, 1496838489, '{\"tableName\":\"cms_nav\",\"action\":\"insert\",\"row\":7}', '{\"parent_nav_id\":\"6\",\"nav_container_id\":1,\"is_hidden\":1,\"is_offline\":1,\"is_draft\":\"0\",\"sort_index\":1,\"id\":7}', 'cms_nav', 7),
+(24, 1, 1, 0, 0, 1496838489, '{\"tableName\":\"cms_nav_item\",\"action\":\"insert\",\"row\":7}', '{\"lang_id\":\"1\",\"title\":\"Lirum Larum\",\"alias\":\"lirum-larum\",\"description\":null,\"nav_item_type\":1,\"nav_item_type_id\":6,\"nav_id\":7,\"timestamp_create\":1496838489,\"timestamp_update\":0,\"create_user_id\":1,\"update_user_id\":1,\"id\":7}', 'cms_nav_item', 7),
+(25, 1, 0, 1, 0, 1496838520, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":7}', '{\"id\":7,\"nav_container_id\":1,\"parent_nav_id\":6,\"sort_index\":1,\"is_deleted\":0,\"is_hidden\":1,\"is_home\":0,\"is_offline\":\"0\",\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 7),
+(26, 1, 0, 1, 0, 1496838521, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":7}', '{\"id\":7,\"nav_container_id\":1,\"parent_nav_id\":6,\"sort_index\":1,\"is_deleted\":0,\"is_hidden\":\"0\",\"is_home\":0,\"is_offline\":0,\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 7),
+(27, 1, 1, 0, 0, 1496843113, '{\"tableName\":\"cms_nav\",\"action\":\"insert\",\"row\":8}', '{\"parent_nav_id\":\"5\",\"nav_container_id\":1,\"is_hidden\":1,\"is_offline\":1,\"sort_index\":2,\"id\":8}', 'cms_nav', 8),
+(28, 1, 1, 0, 0, 1496843113, '{\"tableName\":\"cms_nav_item\",\"action\":\"insert\",\"row\":8}', '{\"lang_id\":\"1\",\"title\":\"Et ora la epiderm\",\"alias\":\"et-ora-la-epiderm\",\"description\":null,\"nav_item_type\":3,\"nav_item_type_id\":2,\"nav_id\":8,\"timestamp_create\":1496843113,\"timestamp_update\":0,\"create_user_id\":1,\"update_user_id\":1,\"id\":8}', 'cms_nav_item', 8),
+(29, 1, 0, 1, 0, 1496843117, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":8}', '{\"id\":8,\"nav_container_id\":1,\"parent_nav_id\":5,\"sort_index\":2,\"is_deleted\":0,\"is_hidden\":1,\"is_home\":0,\"is_offline\":\"0\",\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 8),
+(30, 1, 0, 1, 0, 1496843117, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":8}', '{\"id\":8,\"nav_container_id\":1,\"parent_nav_id\":5,\"sort_index\":2,\"is_deleted\":0,\"is_hidden\":\"0\",\"is_home\":0,\"is_offline\":0,\"is_draft\":0,\"layout_file\":null}', 'cms_nav', 8),
+(31, 1, 1, 0, 0, 1496845192, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":1,\"pageTitle\":\"Homepage\",\"blockName\":\"Banner Block\"}', '[]', 'cms_nav_item_page_block_item', 1),
+(32, 1, 1, 0, 0, 1496845203, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":2,\"pageTitle\":\"Homepage\",\"blockName\":\"Box Block\"}', '[]', 'cms_nav_item_page_block_item', 2),
+(33, 1, 1, 0, 0, 1496845213, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":3,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 3),
+(34, 1, 0, 1, 0, 1496845220, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":3,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 3),
+(35, 1, 0, 1, 0, 1496845259, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":3,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 3),
+(36, 1, 1, 0, 0, 1496845270, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":4,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 4),
+(37, 1, 0, 1, 0, 1496845275, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":4,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 4),
+(38, 1, 0, 1, 0, 1496845278, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":4,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 4),
+(39, 1, 0, 0, 1, 1496845315, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":4,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 4),
+(40, 1, 0, 0, 1, 1496845318, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":3,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 3),
+(41, 1, 1, 0, 0, 1496845323, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":5,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 5),
+(42, 1, 0, 1, 0, 1496845328, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":5,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 5),
+(43, 1, 0, 1, 0, 1496845364, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":5,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 5),
+(44, 1, 1, 0, 0, 1496845369, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":6,\"pageTitle\":\"Homepage\",\"blockName\":\"Box Block\"}', '[]', 'cms_nav_item_page_block_item', 6),
+(45, 1, 0, 0, 1, 1496845374, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":5,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 5),
+(46, 1, 0, 0, 1, 1496845376, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":6,\"pageTitle\":\"Homepage\",\"blockName\":\"Box Block\"}', '[]', 'cms_nav_item_page_block_item', 6),
+(47, 1, 1, 0, 0, 1496845379, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":7,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 7),
+(48, 1, 0, 1, 0, 1496845383, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":7,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 7),
+(49, 1, 0, 1, 0, 1496845433, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":7,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 7),
+(50, 1, 1, 0, 0, 1496845438, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":8,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 8),
+(51, 1, 0, 1, 0, 1496845441, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":8,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 8),
+(52, 1, 0, 0, 1, 1496845708, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":8,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 8),
+(53, 1, 0, 0, 1, 1496845710, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":7,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 7),
+(54, 1, 1, 0, 0, 1496845716, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":9,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 9),
+(55, 1, 0, 1, 0, 1496845734, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":9,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 9),
+(56, 1, 0, 1, 0, 1496845916, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":9,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 9),
+(57, 1, 0, 1, 0, 1496846367, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":9,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 9),
+(58, 1, 0, 1, 0, 1496846824, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":9,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 9),
+(59, 1, 0, 0, 1, 1496848046, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":9,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 9),
+(60, 1, 1, 0, 0, 1496848049, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":10,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 10),
+(61, 1, 0, 1, 0, 1496848067, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":10,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 10),
+(62, 1, 0, 1, 0, 1496848075, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":10,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 10),
+(63, 1, 0, 1, 0, 1496848099, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":10,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 10),
+(64, 1, 0, 1, 0, 1496848136, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":10,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 10),
+(65, 1, 0, 1, 0, 1496848166, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":10,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Block\"}', '[]', 'cms_nav_item_page_block_item', 10),
+(66, 1, 0, 1, 0, 1496849639, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":2,\"pageTitle\":\"Homepage\",\"blockName\":\"Box\"}', '[]', 'cms_nav_item_page_block_item', 2),
+(67, 1, 0, 1, 0, 1496849810, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":2,\"pageTitle\":\"Homepage\",\"blockName\":\"Box\"}', '[]', 'cms_nav_item_page_block_item', 2),
+(68, 1, 0, 0, 1, 1496849864, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":10,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Link\"}', '[]', 'cms_nav_item_page_block_item', 10),
+(69, 1, 0, 1, 0, 1496850072, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":2,\"pageTitle\":\"Homepage\",\"blockName\":\"Box\"}', '[]', 'cms_nav_item_page_block_item', 2),
+(70, 1, 0, 1, 0, 1496850078, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":2,\"pageTitle\":\"Homepage\",\"blockName\":\"Box\"}', '[]', 'cms_nav_item_page_block_item', 2),
+(71, 1, 0, 1, 0, 1496850100, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":2,\"pageTitle\":\"Homepage\",\"blockName\":\"Box\"}', '[]', 'cms_nav_item_page_block_item', 2),
+(72, 1, 0, 1, 0, 1496850439, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":2,\"pageTitle\":\"Homepage\",\"blockName\":\"Box\"}', '[]', 'cms_nav_item_page_block_item', 2),
+(73, 1, 1, 0, 0, 1496850638, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":11,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Link\"}', '[]', 'cms_nav_item_page_block_item', 11),
+(74, 1, 0, 1, 0, 1496850651, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":11,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Link\"}', '[]', 'cms_nav_item_page_block_item', 11),
+(75, 1, 0, 1, 0, 1496851260, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":11,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Link\"}', '[]', 'cms_nav_item_page_block_item', 11),
+(76, 1, 0, 1, 0, 1496851415, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":11,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Link\"}', '[]', 'cms_nav_item_page_block_item', 11),
+(77, 1, 0, 1, 0, 1496851518, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":11,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Link\"}', '[]', 'cms_nav_item_page_block_item', 11),
+(78, 1, 1, 0, 0, 1496851689, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":12,\"pageTitle\":\"Homepage\",\"blockName\":\"Text\"}', '[]', 'cms_nav_item_page_block_item', 12),
+(79, 1, 0, 1, 0, 1496851702, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":12,\"pageTitle\":\"Homepage\",\"blockName\":\"Text\"}', '[]', 'cms_nav_item_page_block_item', 12),
+(80, 1, 1, 0, 0, 1496851837, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":13,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Text\"}', '[]', 'cms_nav_item_page_block_item', 13),
+(81, 1, 0, 1, 0, 1496851853, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":13,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Text\"}', '[]', 'cms_nav_item_page_block_item', 13),
+(82, 1, 1, 0, 0, 1496851857, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":14,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Text\"}', '[]', 'cms_nav_item_page_block_item', 14),
+(83, 1, 0, 1, 0, 1496851862, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":14,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Text\"}', '[]', 'cms_nav_item_page_block_item', 14),
+(84, 1, 1, 0, 0, 1496851866, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":15,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Zitat\"}', '[]', 'cms_nav_item_page_block_item', 15),
+(85, 1, 0, 1, 0, 1496851870, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":15,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Zitat\"}', '[]', 'cms_nav_item_page_block_item', 15),
+(86, 1, 1, 0, 0, 1496851886, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":16,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Überschrift\"}', '[]', 'cms_nav_item_page_block_item', 16),
+(87, 1, 0, 1, 0, 1496851893, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":16,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Überschrift\"}', '[]', 'cms_nav_item_page_block_item', 16),
+(88, 1, 0, 1, 0, 1496851934, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":16,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Überschrift\"}', '[]', 'cms_nav_item_page_block_item', 16),
+(89, 1, 0, 0, 1, 1496851940, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":16,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Überschrift\"}', '[]', 'cms_nav_item_page_block_item', 16),
+(90, 1, 0, 0, 1, 1496852054, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":13,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Text\"}', '[]', 'cms_nav_item_page_block_item', 13),
+(91, 1, 0, 0, 1, 1496852057, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":14,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Text\"}', '[]', 'cms_nav_item_page_block_item', 14),
+(92, 1, 0, 0, 1, 1496852060, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":15,\"pageTitle\":\"Right Sidebar\",\"blockName\":\"Zitat\"}', '[]', 'cms_nav_item_page_block_item', 15),
+(93, 1, 0, 0, 1, 1496852069, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":12,\"pageTitle\":\"Homepage\",\"blockName\":\"Text\"}', '[]', 'cms_nav_item_page_block_item', 12),
+(94, 1, 0, 0, 1, 1496852079, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":11,\"pageTitle\":\"Homepage\",\"blockName\":\"Button Link\"}', '[]', 'cms_nav_item_page_block_item', 11),
+(95, 1, 0, 0, 1, 1496852083, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":2,\"pageTitle\":\"Homepage\",\"blockName\":\"Box\"}', '[]', 'cms_nav_item_page_block_item', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_nav`
+--
+
+CREATE TABLE `cms_nav` (
+  `id` int(11) NOT NULL,
+  `nav_container_id` int(11) NOT NULL,
+  `parent_nav_id` int(11) NOT NULL,
+  `sort_index` int(11) NOT NULL,
+  `is_deleted` tinyint(1) DEFAULT '0',
+  `is_hidden` tinyint(1) DEFAULT '0',
+  `is_home` tinyint(1) DEFAULT '0',
+  `is_offline` tinyint(1) DEFAULT '0',
+  `is_draft` tinyint(1) DEFAULT '0',
+  `layout_file` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `cms_nav`
+--
+
+INSERT INTO `cms_nav` (`id`, `nav_container_id`, `parent_nav_id`, `sort_index`, `is_deleted`, `is_hidden`, `is_home`, `is_offline`, `is_draft`, `layout_file`) VALUES
+(1, 1, 0, 1, 0, 0, 1, 0, 0, NULL),
+(2, 1, 0, 3, 0, 0, 0, 0, 0, NULL),
+(3, 1, 0, 4, 0, 0, 0, 0, 0, NULL),
+(4, 1, 0, 5, 0, 0, 0, 0, 0, NULL),
+(5, 1, 0, 2, 0, 0, 0, 0, 0, NULL),
+(6, 1, 5, 1, 0, 0, 0, 0, 0, NULL),
+(7, 1, 6, 1, 0, 0, 0, 0, 0, NULL),
+(8, 1, 5, 2, 0, 0, 0, 0, 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_nav_container`
+--
+
+CREATE TABLE `cms_nav_container` (
+  `id` int(11) NOT NULL,
+  `name` varchar(180) NOT NULL,
+  `alias` varchar(180) NOT NULL,
+  `is_deleted` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `cms_nav_container`
+--
+
+INSERT INTO `cms_nav_container` (`id`, `name`, `alias`, `is_deleted`) VALUES
+(1, 'Default Container', 'default', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_nav_item`
+--
+
+CREATE TABLE `cms_nav_item` (
+  `id` int(11) NOT NULL,
+  `nav_id` int(11) NOT NULL,
+  `lang_id` int(11) NOT NULL,
+  `nav_item_type` int(11) NOT NULL,
+  `nav_item_type_id` int(11) NOT NULL,
+  `create_user_id` int(11) NOT NULL,
+  `update_user_id` int(11) NOT NULL,
+  `timestamp_create` int(11) DEFAULT '0',
+  `timestamp_update` int(11) DEFAULT '0',
+  `title` varchar(180) NOT NULL,
+  `alias` varchar(80) NOT NULL,
+  `description` text,
+  `keywords` text,
+  `title_tag` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `cms_nav_item`
+--
+
+INSERT INTO `cms_nav_item` (`id`, `nav_id`, `lang_id`, `nav_item_type`, `nav_item_type_id`, `create_user_id`, `update_user_id`, `timestamp_create`, `timestamp_update`, `title`, `alias`, `description`, `keywords`, `title_tag`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1496360684, 1496852083, 'Homepage', 'homepage', NULL, NULL, NULL),
+(2, 2, 1, 1, 2, 1, 1, 1496835773, 0, 'Left Sidebar', 'left-sidebar', NULL, NULL, NULL),
+(3, 3, 1, 1, 3, 1, 1, 1496835790, 1496852060, 'Right Sidebar', 'right-sidebar', NULL, NULL, NULL),
+(4, 4, 1, 1, 4, 1, 1, 1496835808, 0, 'No Sidebar', 'no-sidebar', NULL, NULL, NULL),
+(5, 5, 1, 3, 1, 1, 1, 1496838407, 0, 'Dropdown', 'dropdown', NULL, NULL, NULL),
+(6, 6, 1, 1, 5, 1, 1, 1496838464, 0, 'Lorem larum', 'lorem-larum', NULL, NULL, NULL),
+(7, 7, 1, 1, 6, 1, 1, 1496838489, 0, 'Lirum Larum', 'lirum-larum', NULL, NULL, NULL),
+(8, 8, 1, 3, 2, 1, 1, 1496843113, 0, 'Et ora la epiderm', 'et-ora-la-epiderm', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_nav_item_module`
+--
+
+CREATE TABLE `cms_nav_item_module` (
+  `id` int(11) NOT NULL,
+  `module_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_nav_item_page`
+--
+
+CREATE TABLE `cms_nav_item_page` (
+  `id` int(11) NOT NULL,
+  `layout_id` int(11) NOT NULL,
+  `nav_item_id` int(11) NOT NULL,
+  `timestamp_create` int(11) NOT NULL,
+  `create_user_id` int(11) NOT NULL,
+  `version_alias` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `cms_nav_item_page`
+--
+
+INSERT INTO `cms_nav_item_page` (`id`, `layout_id`, `nav_item_id`, `timestamp_create`, `create_user_id`, `version_alias`) VALUES
+(1, 1, 1, 1496360684, 1, 'Initial'),
+(2, 2, 2, 1496835773, 1, 'Initial'),
+(3, 4, 3, 1496835790, 1, 'Initial'),
+(4, 3, 4, 1496835808, 1, 'Initial'),
+(5, 3, 6, 1496838464, 1, 'Initial'),
+(6, 4, 7, 1496838489, 1, 'Initial');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_nav_item_page_block_item`
+--
+
+CREATE TABLE `cms_nav_item_page_block_item` (
+  `id` int(11) NOT NULL,
+  `block_id` int(11) NOT NULL,
+  `placeholder_var` varchar(80) NOT NULL,
+  `nav_item_page_id` int(11) DEFAULT NULL,
+  `prev_id` int(11) DEFAULT NULL,
+  `json_config_values` text,
+  `json_config_cfg_values` text,
+  `is_dirty` tinyint(1) DEFAULT '0',
+  `create_user_id` int(11) DEFAULT '0',
+  `update_user_id` int(11) DEFAULT '0',
+  `timestamp_create` int(11) DEFAULT '0',
+  `timestamp_update` int(11) DEFAULT '0',
+  `sort_index` int(11) DEFAULT '0',
+  `is_hidden` tinyint(1) DEFAULT '0',
+  `variation` varchar(255) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `cms_nav_item_page_block_item`
+--
+
+INSERT INTO `cms_nav_item_page_block_item` (`id`, `block_id`, `placeholder_var`, `nav_item_page_id`, `prev_id`, `json_config_values`, `json_config_cfg_values`, `is_dirty`, `create_user_id`, `update_user_id`, `timestamp_create`, `timestamp_update`, `sort_index`, `is_hidden`, `variation`) VALUES
+(1, 21, 'banner', 1, 0, NULL, NULL, 0, 1, 0, 1496845192, 1496845192, 0, 0, '0');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_nav_item_redirect`
+--
+
+CREATE TABLE `cms_nav_item_redirect` (
+  `id` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `value` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `cms_nav_item_redirect`
+--
+
+INSERT INTO `cms_nav_item_redirect` (`id`, `type`, `value`) VALUES
+(1, 2, '#'),
+(2, 2, '#');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_nav_permission`
+--
+
+CREATE TABLE `cms_nav_permission` (
+  `group_id` int(11) NOT NULL,
+  `nav_id` int(11) NOT NULL,
+  `inheritance` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `cms_nav_property`
+--
+
+CREATE TABLE `cms_nav_property` (
+  `id` int(11) NOT NULL,
+  `nav_id` int(11) NOT NULL,
+  `admin_prop_id` int(11) NOT NULL,
+  `value` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `migration`
+--
+
+CREATE TABLE `migration` (
+  `version` varchar(180) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `migration`
+--
+
+INSERT INTO `migration` (`version`, `apply_time`) VALUES
+('m000000_000000_base', 1496360590),
+('m141104_104622_admin_group', 1496360592),
+('m141104_104631_admin_user_group', 1496360592),
+('m141104_114809_admin_user', 1496360592),
+('m141203_121042_admin_lang', 1496360592),
+('m141203_143052_cms_cat', 1496360592),
+('m141203_143059_cms_nav', 1496360592),
+('m141203_143111_cms_nav_item', 1496360592),
+('m141208_134038_cms_nav_item_page', 1496360592),
+('m150106_095003_cms_layout', 1496360592),
+('m150108_154017_cms_block', 1496360592),
+('m150108_155009_cms_nav_item_page_block_item', 1496360592),
+('m150122_125429_cms_nav_item_module', 1496360592),
+('m150205_141350_block_group', 1496360592),
+('m150304_152220_admin_storage_folder', 1496360592),
+('m150304_152238_admin_storage_file', 1496360592),
+('m150304_152244_admin_storage_filter', 1496360592),
+('m150304_152250_admin_storage_effect', 1496360592),
+('m150304_152256_admin_storage_image', 1496360592),
+('m150309_142652_admin_storage_filter_chain', 1496360592),
+('m150323_125407_admin_auth', 1496360592),
+('m150323_132625_admin_group_auth', 1496360592),
+('m150331_125022_admin_ngrest_log', 1496360592),
+('m150615_094744_admin_user_login', 1496360592),
+('m150617_200836_admin_user_online', 1496360592),
+('m150626_084948_admin_search_data', 1496360592),
+('m150915_081559_admin_config', 1496360592),
+('m150924_112309_cms_nav_prop', 1496360592),
+('m150924_120914_admin_prop', 1496360592),
+('m151012_072207_cms_log', 1496360592),
+('m151022_143429_cms_nav_item_redirect', 1496360592),
+('m151026_161841_admin_tag', 1496360592),
+('m160629_092417_cmspermissiontable', 1496360592),
+('m160915_081618_create_admin_logger_table', 1496360592),
+('m161219_150240_admin_lang_soft_delete', 1496360592),
+('m161220_183300_lcp_base_tables', 1496360592),
+('m170116_120553_cms_block_variation_field', 1496360593),
+('m170131_104109_user_model_updates', 1496360593),
+('m170218_215610_cms_nav_layout_file', 1496360593),
+('m170301_084325_cms_config', 1496360593);
+
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `admin_auth`
+--
+ALTER TABLE `admin_auth`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_config`
+--
+ALTER TABLE `admin_config`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indizes für die Tabelle `admin_group`
+--
+ALTER TABLE `admin_group`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_lang`
+--
+ALTER TABLE `admin_lang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_logger`
+--
+ALTER TABLE `admin_logger`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_ngrest_log`
+--
+ALTER TABLE `admin_ngrest_log`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_property`
+--
+ALTER TABLE `admin_property`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `var_name` (`var_name`);
+
+--
+-- Indizes für die Tabelle `admin_proxy_build`
+--
+ALTER TABLE `admin_proxy_build`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `build_token` (`build_token`);
+
+--
+-- Indizes für die Tabelle `admin_proxy_machine`
+--
+ALTER TABLE `admin_proxy_machine`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `identifier` (`identifier`);
+
+--
+-- Indizes für die Tabelle `admin_search_data`
+--
+ALTER TABLE `admin_search_data`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_storage_effect`
+--
+ALTER TABLE `admin_storage_effect`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `identifier` (`identifier`);
+
+--
+-- Indizes für die Tabelle `admin_storage_file`
+--
+ALTER TABLE `admin_storage_file`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_storage_filter`
+--
+ALTER TABLE `admin_storage_filter`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `identifier` (`identifier`);
+
+--
+-- Indizes für die Tabelle `admin_storage_filter_chain`
+--
+ALTER TABLE `admin_storage_filter_chain`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_storage_folder`
+--
+ALTER TABLE `admin_storage_folder`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_storage_image`
+--
+ALTER TABLE `admin_storage_image`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_tag`
+--
+ALTER TABLE `admin_tag`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Indizes für die Tabelle `admin_user`
+--
+ALTER TABLE `admin_user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indizes für die Tabelle `admin_user_group`
+--
+ALTER TABLE `admin_user_group`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_user_login`
+--
+ALTER TABLE `admin_user_login`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `admin_user_online`
+--
+ALTER TABLE `admin_user_online`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_block`
+--
+ALTER TABLE `cms_block`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_block_group`
+--
+ALTER TABLE `cms_block_group`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_config`
+--
+ALTER TABLE `cms_config`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indizes für die Tabelle `cms_layout`
+--
+ALTER TABLE `cms_layout`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_log`
+--
+ALTER TABLE `cms_log`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_nav`
+--
+ALTER TABLE `cms_nav`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_nav_container`
+--
+ALTER TABLE `cms_nav_container`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_nav_item`
+--
+ALTER TABLE `cms_nav_item`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_nav_item_module`
+--
+ALTER TABLE `cms_nav_item_module`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_nav_item_page`
+--
+ALTER TABLE `cms_nav_item_page`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_nav_item_page_block_item`
+--
+ALTER TABLE `cms_nav_item_page_block_item`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_nav_item_redirect`
+--
+ALTER TABLE `cms_nav_item_redirect`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `cms_nav_property`
+--
+ALTER TABLE `cms_nav_property`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `migration`
+--
+ALTER TABLE `migration`
+  ADD PRIMARY KEY (`version`);
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `admin_auth`
+--
+ALTER TABLE `admin_auth`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT für Tabelle `admin_group`
+--
+ALTER TABLE `admin_group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT für Tabelle `admin_lang`
+--
+ALTER TABLE `admin_lang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT für Tabelle `admin_logger`
+--
+ALTER TABLE `admin_logger`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `admin_ngrest_log`
+--
+ALTER TABLE `admin_ngrest_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT für Tabelle `admin_property`
+--
+ALTER TABLE `admin_property`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `admin_proxy_build`
+--
+ALTER TABLE `admin_proxy_build`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `admin_proxy_machine`
+--
+ALTER TABLE `admin_proxy_machine`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `admin_search_data`
+--
+ALTER TABLE `admin_search_data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `admin_storage_effect`
+--
+ALTER TABLE `admin_storage_effect`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT für Tabelle `admin_storage_file`
+--
+ALTER TABLE `admin_storage_file`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT für Tabelle `admin_storage_filter`
+--
+ALTER TABLE `admin_storage_filter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT für Tabelle `admin_storage_filter_chain`
+--
+ALTER TABLE `admin_storage_filter_chain`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT für Tabelle `admin_storage_folder`
+--
+ALTER TABLE `admin_storage_folder`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `admin_storage_image`
+--
+ALTER TABLE `admin_storage_image`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT für Tabelle `admin_tag`
+--
+ALTER TABLE `admin_tag`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `admin_user`
+--
+ALTER TABLE `admin_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT für Tabelle `admin_user_group`
+--
+ALTER TABLE `admin_user_group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT für Tabelle `admin_user_login`
+--
+ALTER TABLE `admin_user_login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT für Tabelle `admin_user_online`
+--
+ALTER TABLE `admin_user_online`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT für Tabelle `cms_block`
+--
+ALTER TABLE `cms_block`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT für Tabelle `cms_block_group`
+--
+ALTER TABLE `cms_block_group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT für Tabelle `cms_layout`
+--
+ALTER TABLE `cms_layout`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT für Tabelle `cms_log`
+--
+ALTER TABLE `cms_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+--
+-- AUTO_INCREMENT für Tabelle `cms_nav`
+--
+ALTER TABLE `cms_nav`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT für Tabelle `cms_nav_container`
+--
+ALTER TABLE `cms_nav_container`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT für Tabelle `cms_nav_item`
+--
+ALTER TABLE `cms_nav_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT für Tabelle `cms_nav_item_module`
+--
+ALTER TABLE `cms_nav_item_module`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `cms_nav_item_page`
+--
+ALTER TABLE `cms_nav_item_page`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT für Tabelle `cms_nav_item_page_block_item`
+--
+ALTER TABLE `cms_nav_item_page_block_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT für Tabelle `cms_nav_item_redirect`
+--
+ALTER TABLE `cms_nav_item_redirect`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT für Tabelle `cms_nav_property`
+--
+ALTER TABLE `cms_nav_property`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

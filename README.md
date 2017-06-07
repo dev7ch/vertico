@@ -4,59 +4,72 @@
 
 ## Features
 
-* [LUYA CMS](https://luya.io) integration and easy extendability
+* Complete [LUYA CMS](https://luya.io) integration
 * Fully responsive and ready to use
 * Admin area integration
-* Multilevel Menu included
+* Customizable blocks with drag 'n' drop support 
+* Multi level navigation included
 * SCSS and Gulp worklfow included
-* more ...
-
 
 
 ## Installation
 
 #### 1.) Fork Repo or clone from Git:
 
+Clone the git repository into your web root folder.
+
 ```sh
 git clone git@github.com:dev7ch/vertico.git vertico
-```
-
-> This will clone this Repo to install the current dev-master of LUYA CMS and its modules.
-
-#### 2.) Navigate to project root and and rename Configs
-
-```sh
-
-cd configs &&
-cp env.php.dist env.php &&
-cp env-local-db.php.dist env-local-db.php &&
-cp luya_vertico_demo.sql.dist luya_vertico_demo.sql
 
 ```
 
-> In <code>configs/env-local-db.php</code> the user and password for the database connection need to be set.
 
+#### 2.) Get all dependencies ready for setup via composer
 
-Rename example DB in configs folder:
-
-```sh
-
-cp luya_vertico_demo.sql.dist luya_vertico_demo.sql
-
-```
-Create empty database with for provided DB information and import example DB from '/config/luya_vertico_demo.sql'
-
-#### 3.) Get all dependencies ready for setup
+Navigate to the new created project root.
 
 
 ```sh
+
 composer install
 
 ```
 
-> Get more help in [the LUYA CMS Install Guide](https://luya.io/guide/install).
+> Find more detailed informations and help at [ LUYA CMS Install Guide](https://luya.io/guide/install).
 
-#### 4.) Setup LUYA CMS
+
+#### 3.) Rename distributed config files and create database
+
+Navigate from your project root into the <code> configs/ </code> folder.
+
+
+```sh
+
+cd configs &&
+
+cp env.php.dist env.php &&
+cp env-local-db.php.dist env-local-db.php &&
+
+```
+
+Create a new, empty database and make sure that in <code><b> configs/env-local-db.php </b></code> the <b>user</b> and <b>password</b> for the database connection is properly set.
+
+Rename example database in configs folder (optionally):
+
+```sh
+
+cp luya_vertico_demo.sql.dist luya_vertico_demo.sql
+
+```
+
+Import <code> luya_vertico_demo.sql </code> into your previously created database.
+
+> Of course you can start without a demo DB but it helps to see and understand the features of this theme.
+
+
+#### 4.) Run LUYA CMS setup
+
+As all went fine navigate back to your project root and run the LUYA CMS setup commands.
 
 ```sh
 
@@ -65,29 +78,44 @@ composer install
 
 ```
 
-you could check the health of the cms system
+You could check the health of the cms system  like this:
 
 ```sh
 ./vendor/bin/luya health
 
 ```
 
-#### 4.) Done! Login to your new Website
+Finally adding a new admin user to your cms is required to log in to the admin interface.
+
+
+If you imported <code> luya_vertico_demo.sql </code> use:
+
+```sh 
+./vendor/bin/luya admin/setup/user
+
+```
+
+If you started with an empty database simply run:
+
+
+```sh 
+./vendor/bin/luya admin/setup
+
+```
+
+Please have a look at the [Luya Guide](https://luya.io/guide) if you have any problems.
+
+
+#### 5.) Done! Login to your new Website
 
 If all went fine and no error's shown in Terminal head over to your 
-new Website, obviously 'http//localhost/vertico/public_html'
+new website.
 
 
 - <code> http://localhost/vertico/public_html </code>
 
 - <code> http://localhost/vertico/public_html/admin </code>
 
-Please follow the [Luya Guide](https://luya.io/guide) to add a new user
-
-```sh 
-admin/setup/user
-
-```
 
 ## Front-End
 
@@ -118,7 +146,7 @@ npm install gulp
 
 See [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-workflow) for a full documentation of the workflow.
 
-# Backend
+## Backend
 
 ### Assets
 

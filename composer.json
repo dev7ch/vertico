@@ -1,6 +1,6 @@
 {
     "name": "dev7ch/vertico",
-    "description": "LUYA CMS boilerplate to kickstart projects with Verti Theme by HTML5UP.",
+    "description": "LUYA CMS boilerplate to kickstart your project with Verti theme by HTML5UP.",
     "type": "project",
     "license":"MIT",
     "require": {

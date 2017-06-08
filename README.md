@@ -14,9 +14,17 @@
 
 ## Installation
 
-#### 1.) Fork Repo or clone from Git:
+#### 1.) Create project with composer, fork repository or clone from git
 
-Clone the git repository into your web root folder.
+Creating a new project from packagist is recommended.
+
+```sh 
+
+composer create-project dev7ch/vertico
+
+```
+
+Or you can also clone the git repository into your web root folder.
 
 ```sh
 git clone git@github.com:dev7ch/vertico.git vertico

@@ -150,7 +150,7 @@ See [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-workflow
 
 ### Assets
 
-To speed up your local development you can uncomment the following lines in `configs/local.php` in order to use symlinking your assets instead of copy them every run.
+To speed up your local development you can uncomment the following lines in `configs/env-local.php` in order to use symlinking your assets instead of copy them every run.
 
 ```php
 'assetManager' => [

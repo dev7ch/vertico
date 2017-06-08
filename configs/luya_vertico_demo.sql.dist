@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Erstellungszeit: 07. Jun 2017 um 18:16
+-- Erstellungszeit: 08. Jun 2017 um 12:41
 -- Server-Version: 5.7.18
 -- PHP-Version: 7.1.4
 
@@ -213,7 +213,8 @@ CREATE TABLE `admin_ngrest_log` (
 
 INSERT INTO `admin_ngrest_log` (`id`, `user_id`, `timestamp_create`, `route`, `api`, `is_update`, `is_insert`, `attributes_json`) VALUES
 (1, 1, 1496835978, '', 'api-admin-user', 1, 0, '{\"id\":1,\"firstname\":\"Silvan\",\"lastname\":\"Hahn\",\"title\":1,\"email\":\"silvan@dev7.ch\",\"password\":\"$2y$13$SB6qNxbeT2aRH7E8vTCA8.FK.wadbat5RS04y4Zo7fPGN92rSVfTW\",\"password_salt\":\"CzlZqHVctdlemP2JuRrMOqOnzYDij9G0\",\"auth_token\":\"71b2d6c4d52abbc70e232e45c5568f38c51f9cd33b84fc5da9f96ab0fa90e0c3EgmrTUk0i9IToS-15cYpYqRrZXwP-Nn9\",\"is_deleted\":0,\"secure_token\":null,\"secure_token_timestamp\":0,\"force_reload\":0,\"settings\":null,\"cookie_token\":null}'),
-(2, 1, 1496845185, '', 'api-admin-user', 1, 0, '{\"id\":1,\"firstname\":\"Silvan\",\"lastname\":\"Hahn\",\"title\":1,\"email\":\"silvan@dev7.ch\",\"password\":\"$2y$13$SB6qNxbeT2aRH7E8vTCA8.FK.wadbat5RS04y4Zo7fPGN92rSVfTW\",\"password_salt\":\"CzlZqHVctdlemP2JuRrMOqOnzYDij9G0\",\"auth_token\":\"45732994b59aa9711d4e0bdbe6ff58d9185789fe8df6e558ecb20aeb16a74e34tbqkcrAwAwF6VvHGa4Jbm2MIYRgYNHHz\",\"is_deleted\":0,\"secure_token\":null,\"secure_token_timestamp\":0,\"force_reload\":0,\"settings\":\"{\\\"tree\\\":{\\\"1\\\":1,\\\"5\\\":1,\\\"6\\\":1}}\",\"cookie_token\":null}');
+(2, 1, 1496845185, '', 'api-admin-user', 1, 0, '{\"id\":1,\"firstname\":\"Silvan\",\"lastname\":\"Hahn\",\"title\":1,\"email\":\"silvan@dev7.ch\",\"password\":\"$2y$13$SB6qNxbeT2aRH7E8vTCA8.FK.wadbat5RS04y4Zo7fPGN92rSVfTW\",\"password_salt\":\"CzlZqHVctdlemP2JuRrMOqOnzYDij9G0\",\"auth_token\":\"45732994b59aa9711d4e0bdbe6ff58d9185789fe8df6e558ecb20aeb16a74e34tbqkcrAwAwF6VvHGa4Jbm2MIYRgYNHHz\",\"is_deleted\":0,\"secure_token\":null,\"secure_token_timestamp\":0,\"force_reload\":0,\"settings\":\"{\\\"tree\\\":{\\\"1\\\":1,\\\"5\\\":1,\\\"6\\\":1}}\",\"cookie_token\":null}'),
+(3, 1, 1496853497, '', 'api-admin-user', 0, 1, '{\"id\":2,\"firstname\":\"Mister\",\"lastname\":\"Mixer\",\"title\":0,\"email\":\"demo@open.me\",\"password\":\"$2y$13$jEp7uSNkau4TR7I5sK1vPuO\\/YwEVAhVTtuavYVICwqekExcWQ5jlC\",\"password_salt\":\"uGa_-qgRfOQMLpSsv7C0e5se9zz6eR0d\",\"auth_token\":\"\",\"is_deleted\":0,\"secure_token\":null,\"secure_token_timestamp\":null,\"force_reload\":null,\"settings\":null,\"cookie_token\":null}');
 
 -- --------------------------------------------------------
 
@@ -473,7 +474,8 @@ CREATE TABLE `admin_user` (
 --
 
 INSERT INTO `admin_user` (`id`, `firstname`, `lastname`, `title`, `email`, `password`, `password_salt`, `auth_token`, `is_deleted`, `secure_token`, `secure_token_timestamp`, `force_reload`, `settings`, `cookie_token`) VALUES
-(1, 'Silvan', 'Hahn', 1, 'silvan@dev7.ch', '$2y$13$SB6qNxbeT2aRH7E8vTCA8.FK.wadbat5RS04y4Zo7fPGN92rSVfTW', 'CzlZqHVctdlemP2JuRrMOqOnzYDij9G0', '45732994b59aa9711d4e0bdbe6ff58d9185789fe8df6e558ecb20aeb16a74e34tbqkcrAwAwF6VvHGa4Jbm2MIYRgYNHHz', 0, NULL, 0, 0, '{\"tree\":{\"1\":1,\"5\":1,\"6\":1}}', NULL);
+(1, 'Silvan', 'Hahn', 1, 'silvan@dev7.ch', '$2y$13$SB6qNxbeT2aRH7E8vTCA8.FK.wadbat5RS04y4Zo7fPGN92rSVfTW', 'CzlZqHVctdlemP2JuRrMOqOnzYDij9G0', '45732994b59aa9711d4e0bdbe6ff58d9185789fe8df6e558ecb20aeb16a74e34tbqkcrAwAwF6VvHGa4Jbm2MIYRgYNHHz', 0, NULL, 0, 0, '{\"tree\":{\"1\":1,\"5\":1,\"6\":1}}', NULL),
+(2, 'Mister', 'Mixer', 0, 'demo@open.me', '$2y$13$jEp7uSNkau4TR7I5sK1vPuO/YwEVAhVTtuavYVICwqekExcWQ5jlC', 'uGa_-qgRfOQMLpSsv7C0e5se9zz6eR0d', '', 1, NULL, 0, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -540,7 +542,7 @@ CREATE TABLE `admin_user_online` (
 --
 
 INSERT INTO `admin_user_online` (`id`, `user_id`, `last_timestamp`, `invoken_route`, `lock_pk`, `lock_table`, `lock_translation`, `lock_translation_args`) VALUES
-(4, 1, 1496852083, 'api-cms-navitempageblockitem', '1', 'cms_nav_item', 'lock_cms_edit_page', '{\"title\":\"Homepage\"}');
+(4, 1, 1496853521, 'api-admin-user', '2', 'admin_user', 'lock_admin_edit_crud_item', '{\"table\":\"Benutzer\",\"id\":\"2\",\"module\":\"System\"}');
 
 -- --------------------------------------------------------
 
@@ -1273,7 +1275,7 @@ ALTER TABLE `admin_logger`
 -- AUTO_INCREMENT für Tabelle `admin_ngrest_log`
 --
 ALTER TABLE `admin_ngrest_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT für Tabelle `admin_property`
 --
@@ -1333,7 +1335,7 @@ ALTER TABLE `admin_tag`
 -- AUTO_INCREMENT für Tabelle `admin_user`
 --
 ALTER TABLE `admin_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT für Tabelle `admin_user_group`
 --

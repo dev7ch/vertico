@@ -1,4 +1,4 @@
-# VERTICO LUYA CMS KICKSTARTER
+# LUYA CMS Kickstarter - VERTICO 
 
 <img src="vertico_screenshot.png" />
 
@@ -16,10 +16,9 @@
 
 #### 1.) Create project with composer, fork repository or clone from git
 
-Creating a new project from packagist is recommended.
+Creating a new project from packagist is recommend.
 
 ```sh 
-
 composer create-project dev7ch/vertico
 
 ```
@@ -53,10 +52,10 @@ Navigate from your project root into the <code> configs/ </code> folder.
 
 ```sh
 
-cd configs &&
+cd configs 
 
-cp env.php.dist env.php &&
-cp env-local-db.php.dist env-local-db.php &&
+cp env.php.dist env.php 
+cp env-local-db.php.dist env-local-db.php 
 
 ```
 
@@ -80,6 +79,8 @@ Import <code> luya_vertico_demo.sql </code> into your previously created databas
 As all went fine navigate back to your project root and run the LUYA CMS setup commands.
 
 ```sh
+
+cd ..
 
 ./vendor/bin/luya migrate
 ./vendor/bin/luya import

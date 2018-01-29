@@ -27,7 +27,7 @@ $config = [
     /*
      * Set the administration area language. Available language short codes: "en", "de" and "ru"
      */
-    'luyaLanguage' => 'de',
+
 
     /*
      * Let the application know which module should be executed by default (if no url is set). This module must be included
@@ -54,6 +54,7 @@ $config = [
          */
         'admin' => [
             'class' => 'luya\admin\Module',
+            'interfaceLanguage' => 'en',
             'secureLogin' => false, // when enabling secure login, the mail component must be proper configured otherwise the auth token mail will not send.
         ],
 
@@ -62,7 +63,7 @@ $config = [
          */
         'cms' => [
             'class' => 'luya\cms\frontend\Module',
-            'enableCompression' => true, // compressing the cms output (removing white spaces and newlines)
+            'contentCompression' => true, // compressing the cms output (removing white spaces and newlines)
         ],
 
         /*
@@ -106,7 +107,7 @@ $config = [
          */
         'composition' => [
             'hidden' => true, // you will not have languages in your url (most case for pages which are not multi lingual)
-            'default' => ['langShortCode' => 'de'], // the default language for the composition should match your default language shortCode in the langauge table.
+            'default' => ['langShortCode' => 'en'], // the default language for the composition should match your default language shortCode in the langauge table.
         ],
 
         /*
